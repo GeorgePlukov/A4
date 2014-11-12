@@ -39,8 +39,12 @@ public class ListChar implements MyStack{
 		return false;
 	}
 	public String toString(){
-		
+		if ( tail == null){
+			return head + "";
+		}
 		return head + " " + tail;
 	}
-
+	public static void main(String [] args){
+		System.out.println(new ListChar('a', new ListChar('b',new ListChar ('3',null))));
+	}
 }
