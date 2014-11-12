@@ -7,6 +7,7 @@ public class SnocList {
 	SnocList(char c, SnocList l){
 		this.l = l;
 		this.c = c;
+		//test git commit
 	}
 	public String toString(){
 		return getStr(this.l);
