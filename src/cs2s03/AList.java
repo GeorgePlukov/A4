@@ -10,4 +10,10 @@ public class AList{
 		this.tl = ll;
 		
 	}
+	
+	//insert
+	//top
+	// pop
+	// push
+	
 }
