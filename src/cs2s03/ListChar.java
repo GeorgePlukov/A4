@@ -32,9 +32,9 @@ public class ListChar implements MyStack{
 	
 	@Override
 	public boolean isEmpty() {
-		// check to see if the head is null
-		if (head == '\0'){
-			return true;
+		// check to see if the head and tail are null
+		if (head == '\0' && tail == null){
+			return true; 
 		}
 		return false;
 	}
