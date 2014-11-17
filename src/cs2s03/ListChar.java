@@ -5,9 +5,6 @@ public class ListChar implements MyStack {
 	private char head;
 	private ListChar tail;
 
-	ListChar() {
-		// creates the null list
-	}
 
 	ListChar(char head, ListChar tail) {
 		this.head = head;
@@ -41,7 +38,7 @@ public class ListChar implements MyStack {
 		// check to see if the head and tail are null
 		if (head == '\0' && tail == null) {
 			return true;
-		}
+		}else
 		return false;
 	}
 	@Override
