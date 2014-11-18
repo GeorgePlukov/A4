@@ -8,7 +8,6 @@ public class AList{
 		this.hd = a;
 		this.priority = b;
 		this.tail = ll;
-		
 	}
 	@Override
 	public String toString(){
@@ -16,11 +15,10 @@ public class AList{
 		if (this.hd == '\0' &&this.tail == null){
 			ret += "null";
 		}else
-		// create and return the strings
+			// create and return the strings
 			ret += this.hd + "" + this.priority + this.tail;
 		return ret;
 	}
-	
 	@Override
 	public boolean equals (Object obj){
 		// compare the two strings
@@ -36,8 +34,6 @@ public class AList{
 		else
 			return false;
 	}
-	
-	
 	public AList getTail(){
 		return this.tail;
 	}

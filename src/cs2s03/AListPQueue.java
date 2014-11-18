@@ -26,12 +26,23 @@ public class AListPQueue implements MyPriorityQueue {
 		if (l == null){
 			l = new AList (c,p,l);
 		}
-		if (l.getPriority() < p){
+		insert(l, p, c);
+	
+	}
+
+	private void insert(AList l2, int p, char c) {
+		// if the thing being put in has a higher priority put it at the front
+		if (p > l.getPriority()){
 			// insert it at the top
-			// This list is the new item at the beggining and then the old list
+			// This list is the new item at the beginning and then the old list
 			l = new AList (c,p,l);
 		} else if (l.getPriority() == p){
-			// do the alphebetical order
+			// do the alpha order order
+		} else{
+			if (l2.getTail() == null){
+				
+			}
+			insert (l2.getTail(),p,c);
 		}
 	}
 
@@ -60,6 +71,7 @@ public class AListPQueue implements MyPriorityQueue {
 		AListPQueue a = new AListPQueue();
 		a.insertItem(3, 'a');
 		a.insertItem(8, 'd');
+		a.insertItem(1, 'a');
 		AListPQueue b = new AListPQueue();
 		System.out.println(a);
 	}
