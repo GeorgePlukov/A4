@@ -8,24 +8,33 @@ public class SnocList {
 		this.tail = l;
 		this.head = c;
 	}
-	public char peek (){
-		return this.head;
-	}
+	public char peek () throws EmptyContainerException{
+		if (this.head == '\0')
+			throw new EmptyContainerException("This listchar is empty duuuudee");
+		else
+			return this.head;	}
 	public void pop (){
-		try{
+		// make current head into the head of the tail
+		if (!(this.head == '\0') && this.tail != null)		{
 			this.head = this.tail.head;
-			this.tail =this.tail.tail;
-		}catch (NullPointerException e){
+			// make current tail into the tail of the current tail
+			this.tail = this.tail.tail;
+		}else{
 			this.head = '\0';
 			this.tail = null;
 		}
 	}
 	public void push(char c) {
-		if (!(this.head == '\0'))		
-			// make the current tail equal to a new list that is essentially the current list
+		if (this.head =='\0' && this.tail == null){
+			this.head = c;
+			this.tail = null;
+		}else{
+			// make the current tail equal to a new list that is essentially the
+			// current list
 			this.tail = new SnocList(this.head, this.tail);
-		// add the new head to this list
-		this.head = c;
+			// add the new head to this list
+			this.head = c;
+		}
 	}
 	public boolean isEmpty(){
 		if (this.head == '\0' && this.tail == null)// Even in a snoc list if the char is null and the list is null then the whole list is empty!

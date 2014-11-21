@@ -7,14 +7,16 @@ import org.junit.Test;
 
 public class TestingA4 {
 
-	static ListChar lc;
+	static private ListChar lc;
 	static private StackChar sc;
+	static private SnocList sl;
 	@Before
 	public void setUp() {
 		// this will create a new instance of each item every time a
 		// class is called so that we are working with a fresh list/stack/queue
 		lc = new ListChar('a', new ListChar('4', null));
 		sc = new StackChar('4');
+		sl = new SnocList ('d', new SnocList('a',null));
 	}
 
 	@Test
@@ -286,5 +288,137 @@ public class TestingA4 {
 	}
 	// ############################################################################################################
 	
-	
+	@Test
+	public void testSnocList1() throws EmptyContainerException {
+		// Test 1: pop
+		sl.pop();
+		assertEquals(sl, new SnocList('a', null));
+		// push test 
+		sl.push('1');
+		assertEquals(sl, new SnocList('1', new SnocList('a', null)));
+		// is empty test
+		assertEquals(sl.isEmpty(), false);
+		// is empty 2
+		sl.pop();
+		sl.pop();
+		assertEquals(sl.isEmpty(), true);
+	}
+	@Test
+	public void testSnocList2() throws EmptyContainerException {
+		// Long test 1
+		sl.push('a');
+		sl.push('2');
+		sl.push('r');
+		sl.pop();
+		sl.push('d');
+		sl.push('f');
+		sl.pop();
+		sl.peek();
+		sl.push('a');
+		sl.pop();
+		sl.pop();
+		sl.push('d');
+		sl.push('f');
+		sl.pop();
+		sl.peek();
+		sl.push('a');
+		sl.push('a');
+		sl.pop();
+		assertEquals(sl.peek(), 'a');
+	}
+	// Testing Snoc List
+	@Test
+	public void testSnocList3() throws EmptyContainerException {
+		// Long Test 2
+		sl.push('a');
+		sl.pop();
+		sl.push('2');
+		sl.push('r');
+		sl.pop();
+		sl.pop();
+		sl.pop();
+		sl.push('d');
+		sl.push('f');
+		sl.pop();
+		sl.push('a');
+		sl.push('a');
+		sl.pop();
+		sl.pop();
+		sl.pop();
+		sl.pop();
+		assertEquals(sl.isEmpty(), true);
+	}
+	// Testing Snoc List
+	@Test
+	public void testSnocList4() throws EmptyContainerException {
+		// Long Test 3
+		sl.push('a');
+		sl.pop();
+		sl.push('2');
+		sl.push('r');
+		sl.pop();
+		sl.push('d');
+		sl.push('f');
+		sl.pop();
+		sl.push('a');
+		sl.pop();
+		sl.peek();
+		sl.push('1');
+		sl.pop();
+		sl.push('j');
+		sl.push('a');
+		sl.isEmpty();
+		sl.pop();
+		assertEquals(sl.peek(), 'j');
+	}
+	// Snoc List Exceptions
+	// Snoc List exception 1
+	@Test(expected = EmptyContainerException.class)
+	public void testSnocListExc1() throws EmptyContainerException {
+		// Long Test 3
+		sl.push('a');
+		sl.pop();
+		sl.push('2');
+		sl.push('r');
+		sl.pop();
+		sl.pop();
+		sl.pop();
+		sl.push('d');
+		sl.push('f');
+		sl.pop();
+		sl.push('a');
+		sl.pop();
+		sl.peek();
+		sl.push('1');
+		sl.pop();
+		sl.push('j');
+		sl.push('a');
+		sl.isEmpty();
+		sl.pop();
+		sl.pop();
+		sl.pop();
+		sl.pop();
+		sl.peek();
+		fail("The Expected exception did not occur");
+	}
+	// Snoc List exception 2
+    @Test(expected = EmptyContainerException.class)
+	public void testSnocListExc2() throws EmptyContainerException {
+		sl.pop();
+		sl.pop();
+		sl.peek();
+		fail("The Expected exception did not occur");
+	}
+    // Snoc List exception 3
+	@Test(expected = EmptyContainerException.class)
+	public void testSnocListExc3() throws EmptyContainerException {
+		sl.pop();
+		sl.push('f');
+		sl.peek();
+		sl.pop();
+		sl.pop();
+		sl.isEmpty();
+		sl.peek();
+		fail("The Expected exception did not occur");
+	}
 }
