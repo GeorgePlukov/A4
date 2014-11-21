@@ -58,21 +58,12 @@ public class AListPQueue implements MyPriorityQueue {
 	public boolean equals(Object obj){
 		if (l.toString().equals(obj.toString()))
 			return true;
-		else
-			return false;
-		
+		return false;
 	}
 	
 	@Override
 	public String toString (){
 		return l.toString();
 	}
-	public static void main(String []args){
-		AListPQueue a = new AListPQueue();
-		a.insertItem(3, 'a');
-		a.insertItem(8, 'd');
-		a.insertItem(1, 'a');
-		AListPQueue b = new AListPQueue();
-		System.out.println(a);
-	}
+
 }
