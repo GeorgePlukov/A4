@@ -20,14 +20,22 @@ public class StackChar implements MyStack {
 	@Override
 	public char top() throws EmptyContainerException {
 		// return the top item
-		return array.get(0);
+		try{
+			return array.get(0);
+		}catch (IndexOutOfBoundsException e){
+			throw new EmptyContainerException ("Empty list");
+		}
 	}
 
 	@Override
 	public void pop() {
-		// pop the top off
-		// remove the 0 index element
-		array.remove(0);
+		try{
+			// pop the top off
+			// remove the 0 index element
+			array.remove(0);
+		}catch (IndexOutOfBoundsException e){
+			
+		}
 	}
 
 	@Override

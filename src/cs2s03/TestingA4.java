@@ -14,7 +14,7 @@ public class TestingA4 {
 		// this will create a new instance of each item every time a
 		// class is called so that we are working with a fresh list/stack/queue
 		lc = new ListChar('a', new ListChar('4', null));
-		sc = new StackChar();
+		sc = new StackChar('4');
 	}
 
 	@Test
@@ -150,4 +150,141 @@ public class TestingA4 {
 		lc.top();
 		fail("The Expected exception did not occur");
 	}
+	
+	
+	//#######################################################################################################################
+	//STACK CHAR TESTS
+	@Test
+	public void testStackChar1() throws EmptyContainerException {
+		
+		// Test 1: pop
+		sc.pop();
+		assertEquals(sc, new StackChar());
+		// push test
+		sc.push('1');
+		assertEquals(sc, new StackChar('1'));
+		// is empty test
+		assertEquals(sc.isEmpty(), false);
+		// is empty 2
+		sc.pop();
+		sc.pop();
+		assertEquals(sc.isEmpty(), true);
+	}
+	@Test
+	public void testStackChar2() throws EmptyContainerException {
+		// Long test 1
+		sc.push('a');
+		sc.push('2');
+		sc.push('r');
+		sc.pop();
+		sc.push('d');
+		sc.push('f');
+		sc.pop();
+		sc.top();
+		sc.push('a');
+		sc.pop();
+		sc.pop();
+		sc.push('d');
+		sc.push('f');
+		sc.pop();
+		sc.top();
+		sc.push('a');
+		sc.push('a');
+		sc.pop();
+		assertEquals(sc.top(), 'a');
+	}
+	// Testing Stack char
+	@Test
+	public void testStackChar3() throws EmptyContainerException {
+		// Long Test 2
+		sc.push('a');
+		sc.pop();
+		sc.push('2');
+		sc.push('r');
+		sc.pop();
+		sc.pop();
+		sc.pop();
+		sc.push('d');
+		sc.push('f');
+		sc.pop();
+		sc.push('a');
+		sc.push('a');
+		sc.pop();
+		sc.pop();
+		sc.pop();
+		assertEquals(sc.isEmpty(), true);
+	}
+	// Testing Stack char
+	@Test
+	public void testStackChar4() throws EmptyContainerException {
+		// Long Test 3
+		sc.push('a');
+		sc.pop();
+		sc.push('2');
+		sc.push('r');
+		sc.pop();
+		sc.push('d');
+		sc.push('f');
+		sc.pop();
+		sc.push('a');
+		sc.pop();
+		sc.top();
+		sc.push('1');
+		sc.pop();
+		sc.push('j');
+		sc.push('a');
+		sc.isEmpty();
+		sc.pop();
+		assertEquals(sc.top(), 'j');
+	}
+	// Stack Char Exceptions
+	// Stack char exception 1
+	@Test(expected = EmptyContainerException.class)
+	public void testStackCharExc1() throws EmptyContainerException {
+		// Long Test 3
+		sc.push('a');
+		sc.pop();
+		sc.push('2');
+		sc.push('r');
+		sc.pop();
+		sc.pop();
+		sc.pop();
+		sc.push('d');
+		sc.push('f');
+		sc.pop();
+		sc.push('a');
+		sc.pop();
+		sc.top();
+		sc.push('1');
+		sc.pop();
+		sc.push('j');
+		sc.push('a');
+		sc.isEmpty();
+		sc.pop();
+		sc.pop();
+		sc.pop();
+		sc.top();
+		fail("The Expected exception did not occur");
+	}
+	// Stack char exception 2
+    @Test(expected = EmptyContainerException.class)
+	public void testStackCharExc2() throws EmptyContainerException {
+		sc.pop();
+		sc.top();
+		fail("The Expected exception did not occur");
+	}
+    // Stack char exception 3
+	@Test(expected = EmptyContainerException.class)
+	public void testStackCharExc3() throws EmptyContainerException {
+		sc.pop();
+		sc.push('f');
+		sc.top();
+		sc.pop();
+		sc.isEmpty();
+		sc.top();
+		fail("The Expected exception did not occur");
+	}
+	// ############################################################################################################
+	
+	
 }
