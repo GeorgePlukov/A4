@@ -4,6 +4,9 @@ public class SnocList {
 	private SnocList tail;
 	// Initialize the character that will hold the actual information
 	private char head;
+	SnocList (){
+		
+	}
 	SnocList(char c, SnocList l) {
 		this.tail = l;
 		this.head = c;
@@ -36,6 +39,12 @@ public class SnocList {
 			this.head = c;
 		}
 	}
+	public SnocList getTail(){
+		return this.tail;
+	}
+	public void setTail(SnocList tl){
+		this.tail = tl;
+	}
 	public boolean isEmpty(){
 		if (this.head == '\0' && this.tail == null)// Even in a snoc list if the char is null and the list is null then the whole list is empty!
 			return true;
@@ -50,5 +59,9 @@ public class SnocList {
 	@Override
 	public String toString() {
 		return this.tail + "" + this.head;
+	}
+	public char gethead() {
+		// TODO Auto-generated method stub
+		return this.head;
 	}
 }

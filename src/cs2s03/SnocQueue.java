@@ -4,7 +4,7 @@ public class SnocQueue implements MyQueue{
 	private SnocList l;
 
 	SnocQueue(){
-		
+		l = new SnocList();
 	}
 	@Override
 	public char peek() throws EmptyContainerException { // returns head does not change SnocList
@@ -18,13 +18,27 @@ public class SnocQueue implements MyQueue{
 	@Override
 	public void dequeue() {// Take an element off the top of the queue
 		l.pop();
+		
 	}
 
 	@Override
 	public void enqueue(char c) { // add an element to the tail of the queue
-		l.push(c);
+		if (this.l.getTail() == null){
+			this.l.setTail(new SnocList(c,null));
+		}else {
+			SnocList tList = this.l.getTail();
+			do{
+				l.push(c);
+				System.out.println('a');
+				
+ 			}while (!l.isEmpty());
+			l.setTail(tList);
+		}
 	}
-
+	public String toString(){
+		return l.toString();
+		
+	}
 	@Override
 	public boolean isEmpty() {
 		if (this.l.isEmpty() || this.l == null)
@@ -32,8 +46,5 @@ public class SnocQueue implements MyQueue{
 		else
 			return false;
 	}
-	public static void main(String [] args){
-		SnocQueue a = null;
-		System.out.println(a);
-	}
+
 }
