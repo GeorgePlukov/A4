@@ -9,7 +9,8 @@ This Assignments purpose is to create different ways of storing data. Through St
   - SnocQueue
   - PriorityQueue
   - AListPQueue
-  - 
+
+
 ##Testing
 
 These were all tested using JUnit test cases. Tests included pushing, poping, checking empty list cases and more.
